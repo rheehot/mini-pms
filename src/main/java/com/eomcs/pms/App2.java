@@ -6,46 +6,55 @@ import java.util.Scanner;
 public class App2 {
 
   public static void main(String[] args) {
+    // 프로젝트 정보를 담을 메모리의 설계도를 만든다.
+    class Project {
+      int no;
+      String title;
+      String content;
+      Date startDate;
+      Date endDate;
+      String owner;
+      String members;
+    }
+
     System.out.println("[프로젝트]");
 
     Scanner keyboardScan = new Scanner(System.in);
 
-    // 최대 100개의 프로젝트 정보를 저장할 메모리 준비
-    // => 배열의 크기를 미리 변수에 저장하여 사용한다.
-    // => 나중에 배열의 크기를 바꾸기 쉽다.
-    int length = 100;
-    int[] no = new int[length];
-    String[] title = new String[length];
-    String[] content = new String[length];
-    Date[] startDate = new Date[length];
-    Date[] endDate = new Date[length];
-    String[] owner = new String[length];
-    String[] members = new String[length];
+    // 최대 100개의 Project 인스턴스의 주소를 저장할 레퍼런스 배열 준비
+    final int LENGTH = 100;
+    Project[] projects = new Project[LENGTH];
 
     int size = 0;
     for (int i = 0; i < 100; i++) {
+
+      // 프로젝트 정보를 담은 Project 인스턴스를 생성한다.
+      Project project = new Project();
+
       System.out.print("번호? ");
-      no[i] = Integer.valueOf(keyboardScan.nextLine());
+      project.no = Integer.valueOf(keyboardScan.nextLine());
 
       System.out.print("프로젝트명? ");
-      title[i] = keyboardScan.nextLine();
+      project.title = keyboardScan.nextLine();
 
       System.out.print("내용? ");
-      content[i] = keyboardScan.nextLine();
+      project.content = keyboardScan.nextLine();
 
       System.out.print("시작일? ");
-      startDate[i] = Date.valueOf(keyboardScan.nextLine());
+      project.startDate = Date.valueOf(keyboardScan.nextLine());
 
       System.out.print("종료일? ");
-      endDate[i] = Date.valueOf(keyboardScan.nextLine());
+      project.endDate = Date.valueOf(keyboardScan.nextLine());
 
       System.out.print("만든이? ");
-      owner[i] = keyboardScan.nextLine();
+      project.owner = keyboardScan.nextLine();
 
       System.out.print("팀원? ");
-      members[i] = keyboardScan.nextLine();
+      project.members = keyboardScan.nextLine();
 
-      size++;
+      // Project 인스턴스 주소를 배열에 저장
+      projects[size++] = project;
+
       System.out.println(); // 빈 줄 출력
 
       System.out.print("계속 입력하시겠습니까?(y/N) ");
@@ -64,7 +73,12 @@ public class App2 {
     for (int i = 0; i < size; i++) {
       // 번호, 프로젝트명, 시작일, 종료일, 만든이
       System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-          no[i], title[i], startDate[i], endDate[i], owner[i]);
+          projects[i].no, // 프로젝트 번호
+          projects[i].title, // 프로젝트명
+          projects[i].startDate, // 시작일
+          projects[i].endDate, // 종료일
+          projects[i].owner // 프로젝트 생성자
+          );
     }
   }
 }

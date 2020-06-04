@@ -1,26 +1,10 @@
 package com.eomcs.pms;
 
-import java.util.Scanner;
-
 public class App {
 
   public static void main(String[] args) {
 
-    Scanner keyboardScan = new Scanner(System.in);
-
-    // 사용자로부터 명령어 입력을 반복해서 받는다.
-    while (true) {
-      System.out.print("명령> ");
-      String command = keyboardScan.nextLine();
-      System.out.println(command);
-
-      // "quit" 이나 "exit"를 입력하면 반복을 종료한다.
-      if (command.equalsIgnoreCase("quit") || command.equalsIgnoreCase("exit")) {
-        break;
-      }
-    }
-
-    keyboardScan.close();
+    System.out.println("명령>");
 
     /*
     class Member {
@@ -35,7 +19,7 @@ public class App {
 
     System.out.println("[회원]");
 
-
+    Scanner keyboardScan = new Scanner(System.in);
 
     // 최대 100 개의 레퍼런스를 생성한다.
     final int LENGTH = 100;
@@ -81,7 +65,7 @@ public class App {
       System.out.println(); // 빈 줄 출력
     }
 
-
+    keyboardScan.close();
 
     System.out.println("--------------------------------");
 
